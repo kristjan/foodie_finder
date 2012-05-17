@@ -1,5 +1,5 @@
 %div(data-role="header")
-  %h1 Sign-in
+  %h1 Foodie Finder
 %div(data-role="content")
   %h2
     - if @profiles
@@ -13,7 +13,7 @@
       \.
       %a(href="/logout") Log out
   %ul
-    - %w[facebook linkedin].each do |service|
+    - %w[foursquare instagram].each do |service|
       %li
         = service.capitalize
         - if @profiles && @profiles[service]

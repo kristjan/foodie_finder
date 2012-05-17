@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-SinglyRailsSkeleton::Application.load_tasks
+FoodieFinder::Application.load_tasks
