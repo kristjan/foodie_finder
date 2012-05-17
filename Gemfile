@@ -14,6 +14,7 @@ gem 'json'
 gem 'haml', '3.1.4'
 gem 'httparty'
 gem 'omniauth-singly'
+gem 'singly', :path => 'vendor/gems/singly'
 
 # Gems used only for assets and not required
 # in production environments by default.

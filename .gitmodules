@@ -1,0 +1,3 @@
+[submodule "vendor/gems/singly"]
+	path = vendor/gems/singly
+	url = git@github.com:Singly/singly.rb
