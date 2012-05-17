@@ -9,6 +9,10 @@ class DefaultController < ApplicationController
     end
   end
 
+  def friends
+    @friends_list = ['brad','jason','merci']
+  end
+
 private
 
   def access_token
