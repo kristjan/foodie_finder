@@ -13,6 +13,10 @@ class DefaultController < ApplicationController
     @friends_list = ['brad','jason','merci']
   end
 
+  def food
+    @photos = Instagram.photos_of_food(ENV['SINGLY_TOKEN'])
+  end
+
 private
 
   def access_token

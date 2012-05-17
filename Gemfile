@@ -11,6 +11,7 @@ end
 
 gem 'json'
 
+gem 'curb'
 gem 'haml', '3.1.4'
 gem 'httparty'
 gem 'omniauth-singly'
