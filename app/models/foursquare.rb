@@ -94,6 +94,12 @@ module Foursquare
     "4bf58dd8d48988d14c941735",
   ]
 
+  def self.food_checkins(token)
+    Singly::Client.new(token).foursquare.recent(:limit => 500).select do |checkin|
+      food?(checkin["data"]["venue"]) rescue false
+    end
+  end
+
   def self.find_food_venues(locations)
     responses = {}
     m = Curl::Multi.new

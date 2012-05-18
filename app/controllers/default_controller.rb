@@ -13,12 +13,10 @@ class DefaultController < ApplicationController
     @friends_list = ['brad','jason','merci']
   end
 
-  def food
-    @photos = Instagram.photos_of_food(ENV['SINGLY_TOKEN'])
-  end
-
   def feed
-    @feed = Instagram.photos_of_food(access_token)
+    @photos = normalize_photos(Instagram.photos_of_food(access_token))
+    @checkins = normalize_checkins(Foursquare.food_checkins(ENV['SINGLY_TOKEN']))
+    @feed = (@photos + @checkins).sort_by{|item| item["at"].to_i}
   end
 
 private
@@ -31,5 +29,24 @@ private
 
   def profiles_url
     "#{SINGLY_API_BASE}/profiles"
+  end
+
+  def normalize_photos(items)
+    items.each do |item|
+      item["normalized"] = {
+        "user_name" => item["data"]["user"]["full_name"]
+      }
+    end
+    items
+  end
+
+  def normalize_checkins(items)
+    items.each do |item|
+      item["normalized"] = {
+        "user_name" => [item["data"]["user"]["firstName"].to_s,
+                        item["data"]["user"]["lastName"].to_s].join(' ')
+      }
+    end
+    items
   end
 end
