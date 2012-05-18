@@ -15,7 +15,7 @@ class DefaultController < ApplicationController
 
   def feed
     @photos = normalize_photos(Instagram.photos_of_food(access_token))
-    @checkins = normalize_checkins(Foursquare.food_checkins(ENV['SINGLY_TOKEN']))
+    @checkins = normalize_checkins(Foursquare.food_checkins(access_token))
     @feed = (@photos + @checkins).sort_by{|item| item["at"].to_i}
   end
 

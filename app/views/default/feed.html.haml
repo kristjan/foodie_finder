@@ -24,20 +24,23 @@
       - if item['idr'] =~ /instagram/
         %li
           %div.feed_item
-            %div.feed_head(style="display:inline-block;")
+            %div.feed_head(style="display:inline-block;width:250px;")
               %img(src="#{item['data']['user']['profile_picture']}" style="width:40px;height:40px;display:block;float:left;margin-right:5px;")
               %a(href="http://maps.google.com?q=#{item['foursquare_venue']['location']['address']} #{item['foursquare_venue']['location']['city']} #{item['foursquare_venue']['location']['state']} #{item['foursquare_venue']['location']['postalCode']}")
-                %span.feed_place venuename item['foursquare_venue']['name']
+                %span.feed_place= venuename item['foursquare_venue']['name']
               %br
-              %span.feed_user item['normailzed']['user_name']
+              %span.feed_user= item['normalized']['user_name']
             %div.feed_body
               %img(src="#{item['data']['images']['low_resolution']['url']}" height="306px" width="306px")
       - else
         %li
           %div.feed_item
-            %div.feed_head(style="display:inline-block;")
+            %div.feed_head(style="display:inline-block;width:250px;")
               %img(src="#{item['data']['user']['photo']}" style="width:40px;height:40px;display:block;float:left;margin-right:5px;")
-              %a(href="http://maps.google.com?q=#{item['venue']['location']['address']} #{item['venue']['location']['city']} #{item['venue']['location']['state']} #{item['venue']['location']['postalCode']}")
-                %span.feed_place venuename item['venue']['name']
+              - if item['data']['venue'] && item['data']['venue']['location']
+                %a(href="http://maps.google.com?q=#{item['data']['venue']['location']['address']} #{item['data']['venue']['location']['city']} #{item['data']['venue']['location']['state']} #{item['data']['venue']['location']['postalCode']}")
+                  %span.feed_place= item['data']['venue']['name']
+              - else
+                %span.feed_place= item['data']['venue']['name']
               %br
-              %span.feed_user item['normailzed']['user_name']
+              %span.feed_user= item['normalized']['user_name']
