@@ -11,7 +11,7 @@ module Instagram
   end
 
   def self.photos_with_locations(token)
-    feed = Singly::Client.new(token).instagram.feed
+    feed = Singly::Client.new(token).instagram.feed(:limit => 500)
     located = feed.select do |photo|
       location = photo["data"]["location"]
       location && !location["name"].blank?
