@@ -17,6 +17,10 @@ class DefaultController < ApplicationController
     @photos = Instagram.photos_of_food(ENV['SINGLY_TOKEN'])
   end
 
+  def feed
+    @feed = Instagram.photos_of_food(access_token)
+  end
+
 private
 
   def access_token

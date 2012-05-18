@@ -4,25 +4,13 @@
   %h2
     - if @profiles
       Nice to see you again!
-      %a(href="/friends") Top Foodies
     - else
       Connect services find the best food nearby
-  - if @profiles
-    %p
-      Your Singly ID is
-      = @profiles["id"]
-      %br
-      %input(value="#{session[:access_token]}")
-      %br
-      \.
-      %a(href="/logout") Log out
   %ul
-    - %w[foursquare instagram].each do |service|
-      %li
-        = service.capitalize
-        - if @profiles && @profiles[service]
-          is connected as
-          = @profiles[service]
-        - else
-          is not connected.
-          %a(href="/auth/singly?service=#{service}" rel="external") Connect
+    %li
+      %a(href="/auth/singly?service=foursquare" rel="external")
+        %img(src="/images/foursquare.png")
+    %li
+      %a(href="/auth/singly?service=instagram" rel="external")
+        %img(src="/images/instagram.png")
+  %a(href="/feed" data-role="button") Top Spots from Foodies

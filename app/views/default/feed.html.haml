@@ -1,0 +1,19 @@
+%div(data-role="header" data-position="inline")
+  %h1 Restaurants
+%div(data-role="content")
+  %ul.ui-listview{"data-role" => "listview"}
+    %li
+      %div.feed_item
+        %div.feed_head
+          %img(src="")
+          %span.feed_place venuename
+          %span.feed_user item['data']['user']['full_name']
+        %div.feed_body
+          %img(src="https://instagr.am/p/Kv2B8lw_N6/media/?size=l")
+    - @feed.each do |item|
+      %li
+        %div.feed_item
+          %div.feed_head
+            %img(src="")
+            %span.feed_place venuename
+            %span.feed_user item['data']['user']['full_name']

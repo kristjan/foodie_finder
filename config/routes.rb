@@ -4,7 +4,7 @@ FoodieFinder::Application.routes.draw do
   match "logout"                 => "auth#logout"
   match "friends"                => "default#friends"
   match "food"                   => "default#food"
-
+  match "feed"                   => "default#feed"
   root :to                       => "default#home"
   match ":controller/:action"
 end
